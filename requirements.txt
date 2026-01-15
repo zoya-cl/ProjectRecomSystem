@@ -1,0 +1,8 @@
+pandas
+scikit-learn
+numpy
+tabulate
+rich
+fastapi
+uvicorn[standard]
+nltk

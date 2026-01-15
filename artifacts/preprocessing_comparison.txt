@@ -1,0 +1,20 @@
+================================================================================
+PREPROCESSING SYSTEM COMPARISON
+================================================================================
+
+EXAMPLE: Processing Agriculture-based IoT system for smart farming
+--------------------------------------------------------------------------------
+OLD SYSTEM (Stemming):
+  Output: agricultur base iot smart farm
+  Issues: X agriculture  agricultur (broken)
+          X system removed (stopword)
+
+NEW SYSTEM (Lemmatization):
+  Output: agriculture base iot system smart farming
+  Success:  agriculture preserved
+            system retained
+
+KEY IMPROVEMENTS:
+  Feature Space:      10,000  15,000 (+50%)
+  Unique Tokens:       2,392   3,023 (+26%)
+  Protected Terms:        0     192 (NEW)
