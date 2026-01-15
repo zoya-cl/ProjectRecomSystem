@@ -157,17 +157,22 @@ class ProjectRecommender:
         # Format results
         results = []
         for _, row in results_df.iterrows():
+            # Helper function to safely get string values, replacing NaN with empty string
+            def safe_get(field_name, default=''):
+                value = row.get(field_name, default)
+                return '' if pd.isna(value) else str(value)
+            
             results.append({
                 'project_id': row.get('Project ID', ''),
-                'title': row.get('Title of the Project', ''),
-                'domain': row.get('Domain', ''),
-                'description': row.get('Short Description', ''),
-                'language': row.get('Language Used', ''),
-                'difficulty': row.get('Toughness Level', ''),
-                'keywords': row.get('Keywords', ''),
-                'libraries': row.get('Toolkits/Libraries', ''),
-                'build_time': row.get('Expected Build Time', ''),
-                'documentation': row.get('Documentation', ''),
+                'title': safe_get('Title of the Project'),
+                'domain': safe_get('Domain'),
+                'description': safe_get('Short Description'),
+                'language': safe_get('Language Used'),
+                'difficulty': safe_get('Toughness Level'),
+                'keywords': safe_get('Keywords'),
+                'libraries': safe_get('Toolkits/Libraries'),
+                'build_time': safe_get('Expected Build Time'),
+                'documentation': safe_get('Documentation'),
                 'score': round(float(row['similarity_score']), 4)
             })
         
@@ -203,11 +208,16 @@ class ProjectRecommender:
         
         results = []
         for _, row in results_df.iterrows():
+            # Helper function to safely get string values, replacing NaN with empty string
+            def safe_get(field_name, default=''):
+                value = row.get(field_name, default)
+                return '' if pd.isna(value) else str(value)
+            
             results.append({
                 'project_id': row.get('Project ID', ''),
-                'title': row.get('Title of the Project', ''),
-                'domain': row.get('Domain', ''),
-                'description': row.get('Short Description', ''),
+                'title': safe_get('Title of the Project'),
+                'domain': safe_get('Domain'),
+                'description': safe_get('Short Description'),
                 'score': round(float(row['similarity_score']), 4)
             })
         
